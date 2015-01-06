@@ -1,0 +1,5 @@
+services:
+    form.type.address_map_type:
+        class: Addressable\Bundle\Form\Type\AddressMapType
+        tags:
+            - { name: form.type, alias: address_map_type }
