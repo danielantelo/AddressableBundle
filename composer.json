@@ -1,7 +1,7 @@
 {
     "name": "daa/addressable-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony2 bundle to make entities addressable. Includes a google map form type to set address via lat/lng.",
+    "description": "This is a Symfony2 bundle which facilitates making entities addressable and geo location aware.",
     "authors": [
         {
             "name": "Daniel Antelo",
