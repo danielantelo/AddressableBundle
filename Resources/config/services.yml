@@ -1,0 +1,5 @@
+services:
+    form.type.addressable_type:
+        class: Daa\AddressableBundle\Form\Type\AddressableType
+        tags:
+            - { name: form.type, alias: addressable_type }
