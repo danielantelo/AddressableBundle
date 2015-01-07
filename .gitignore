@@ -1,5 +1,15 @@
-# testing key
-key.ini
+# symfony generated
+/web/bundles/
+/web/css
+/web/js
+/web/app
+/web/config
+/app/bootstrap.php.cache
+/app/data
+/app/cache
+/app/logs
+/app/config/parameters.yml
+/app/phpunit.xml
 
 # vendor files
 vendor
@@ -11,6 +21,8 @@ composer.phar
 # misc generated
 bin/
 build/
+artefacts/
+phpdoc/
 
 # ide files
 .settings
