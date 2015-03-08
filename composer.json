@@ -10,11 +10,13 @@
     ],
     "require": {
         "php": ">=5.4",
-        "symfony/framework-bundle": "~2.3"
+        "symfony/framework-bundle": "~2.3",
+        "daa/project-tools": "~1.0"
     },
     "autoload": {
         "psr-4": { 
-            "Addressable\\Bundle\\": ""
+            "Addressable\\Bundle\\": "",
+            "Daa\\Addressable\\Bundle\\": ""
         }
     }
 }

@@ -3,51 +3,55 @@
 namespace Addressable\Bundle\Model;
 
 /**
- * Allows you to make a document addressable
- * e.g. Property and University have addresses
- *
- * @author dantelo
+ * Allows you to make an object addressable
+ * e.g. Property, Event, etc.
  */
 interface AddressableInterface
 {
     /**
-     * Returns the associated country
+     * Returns the associated country.
      *
-     * @return String
+     * @return string
      */
     public function getCountry();
 
     /**
-     * Returns the associated postcode
+     * Returns the associated postcode.
      *
-     * @return String
+     * @return string
      */
     public function getZipCode();
 
     /**
-     * Returns the associated street number
+     * Returns the associated street number.
      *
-     * @return String
+     * @return string
      */
     public function getStreetNumber();
 
     /**
-     * Returns the latitude of the address
+     * Returns the associated street number.
      *
-     * @return String
+     * @return string
+     */
+    public function getStreetName();
+
+    /**
+     * Returns the latitude of the address.
+     *
+     * @return string
      */
     public function getLatitude();
 
     /**
-     * Returns the latitude of the address
+     * Returns the latitude of the address.
      *
-     * @return String
+     * @return string
      */
     public function getLongitude();
 
     /**
-     * Returns all address fields in an array
-     * array(
+     * Returns all address fields in an array(
      *       'country' => $this->getCountry(),
      *       'zipCode' => $this->getZipCode(),
      *       'streetNumber' => $this->getStreetNumber(),
@@ -55,9 +59,9 @@ interface AddressableInterface
      *       'city' => $this->getCity(),
      *       'latitude' => $this->getLatitude(),
      *       'longitude' => $this->getLongitude()
-     *  );
+     *  ).
      *
-     * @return Array
+     * @return array
      */
     public function getAddress();
 }

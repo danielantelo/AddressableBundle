@@ -9,6 +9,9 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+/**
+ * Form type for adding a map to select a full address.
+ */
 class AddressMapType extends AbstractType
 {
     /**
@@ -79,6 +82,9 @@ class AddressMapType extends AbstractType
         $view->vars['include_current_pos_link'] = $options['include_current_pos_link'];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'address_map_type';
