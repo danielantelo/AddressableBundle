@@ -94,7 +94,7 @@ protected function configureFormFields(FormMapper $formMapper)
 {
     $formMapper
         ->with('Location')
-            ->add('address', 'addressable_type', array())
+            ->add('address', 'address_map_type', array())
         ->end()
         ...
 }
@@ -103,7 +103,7 @@ protected function configureFormFields(FormMapper $formMapper)
 public function buildForm(FormBuilderInterface $builder, array $options)
 {
     $builder
-        ->add('address', 'addressable_type', array())
+        ->add('address', 'address_map_type', array())
     ...
 }
 
