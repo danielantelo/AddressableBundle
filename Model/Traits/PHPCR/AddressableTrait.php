@@ -6,43 +6,43 @@ use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Addressable\Bundle\Validator\Constraints as Address;
 
 /**
- * PHPCR Trait for implementing addressable on a document.
+ * Trait for implementing addressable on a PHPCR document.
  */
 trait AddressableTrait
 {
     /**
-     * @PHPCR\String()
-     */
-    protected $country;
-
-    /**
-     * @PHPCR\String()
-     */
-    protected $zipCode;
-
-    /**
-     * @PHPCR\String()
+     * @PHPCR\String(nullable=true)
      */
     protected $streetNumber;
 
     /**
-     * @PHPCR\String()
+     * @PHPCR\String(nullable=true)
      */
     protected $streetName;
 
     /**
-     * @PHPCR\String()
+     * @PHPCR\String(nullable=true)
      */
     protected $city;
 
     /**
-     * @PHPCR\Float()
+     * @PHPCR\String(nullable=true)
+     */
+    protected $country;
+
+    /**
+     * @PHPCR\String(nullable=true)
+     */
+    protected $zipCode;
+
+    /**
+     * @PHPCR\Float(nullable=true)
      * @Address\Latitude()
      */
     protected $latitude;
 
     /**
-     * @PHPCR\Float()
+     * @PHPCR\Float(nullable=true)
      * @Address\Longitude()
      */
     protected $longitude;
@@ -202,7 +202,17 @@ trait AddressableTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Returns all address fields in an array(
+     *       'country' => $this->getCountry(),
+     *       'zipCode' => $this->getZipCode(),
+     *       'streetNumber' => $this->getStreetNumber(),
+     *       'streetName' => $this->getStreetName(),
+     *       'city' => $this->getCity(),
+     *       'latitude' => $this->getLatitude(),
+     *       'longitude' => $this->getLongitude()
+     *  )
+     *
+     * @return array
      */
     public function getAddress()
     {
@@ -216,7 +226,6 @@ trait AddressableTrait
             'longitude' => $this->getLongitude(),
         );
     }
-
     /**
      * Sets all the address fields from an array(
      *       'country' => $this->getCountry(),

@@ -6,20 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Addressable\Bundle\Validator\Constraints as Address;
 
 /**
- * PHPCR Trait for implementing addressable on an entity.
+ * Trait for implementing addressable on an ORM entity.
  */
 trait AddressableTrait
 {
-    /**
-     * @ORM\Column(type="string", length=150, nullable=true)
-     */
-    protected $country;
-
-    /**
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    protected $zipCode;
-
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      */
@@ -34,6 +24,16 @@ trait AddressableTrait
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     protected $city;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true)
+     */
+    protected $country;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    protected $zipCode;
 
     /**
      * @ORM\Column(type="float", nullable=true)
@@ -202,7 +202,17 @@ trait AddressableTrait
     }
 
     /**
-     * {@inheritdoc}
+     * Returns all address fields in an array(
+     *       'country' => $this->getCountry(),
+     *       'zipCode' => $this->getZipCode(),
+     *       'streetNumber' => $this->getStreetNumber(),
+     *       'streetName' => $this->getStreetName(),
+     *       'city' => $this->getCity(),
+     *       'latitude' => $this->getLatitude(),
+     *       'longitude' => $this->getLongitude()
+     *  )
+     *
+     * @return array
      */
     public function getAddress()
     {
@@ -216,7 +226,6 @@ trait AddressableTrait
             'longitude' => $this->getLongitude(),
         );
     }
-
     /**
      * Sets all the address fields from an array(
      *       'country' => $this->getCountry(),

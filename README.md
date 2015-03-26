@@ -109,6 +109,8 @@ public function buildForm(FormBuilderInterface $builder, array $options)
 
 ```
 
+Note: if using address as a child or relation remember to set the 'data_class' options pointing to the Address object.
+
 Options
 -------
 
