@@ -25,8 +25,8 @@ class AddressMapType extends AbstractType
             ->add($options['streetnumber_field'], $options['type'], $options['options'])
             ->add($options['streetname_field'], $options['type'], $options['options'])
             ->add($options['city_field'], $options['type'], $options['options'])
-            ->add($options['lat_field'], $options['latlng_type'], array_merge($options['options'], $options['lat_options']))
-            ->add($options['lng_field'], $options['latlng_type'], array_merge($options['options'], $options['lng_options']))
+            ->add($options['lat_field'], $options['latlng_type'], array_merge($options['options'], $options['latlng_options']))
+            ->add($options['lng_field'], $options['latlng_type'], array_merge($options['options'], $options['latlng_options']))
         ;
     }
 
@@ -38,9 +38,8 @@ class AddressMapType extends AbstractType
         $resolver->setDefaults(array(
             'type' => 'text',  // the types to render the lat and lng fields as
             'latlng_type' => 'hidden',  // the types to render the lat and lng fields as
-            'options' => array('read_only' => true), // the options for both the fields
-            'lat_options' => array(),   // the options for just the lat field
-            'lng_options' => array(),    // the options for just the lng field
+            'options' => array('read_only' => false), // the options for all fields
+            'latlng_options' => array('read_only' => true),   // the options for just the lat field
             'error_bubbling' => false,
             'map_width' => '100%',  // the width of the map
             'map_height' => 300,     // the height of the map

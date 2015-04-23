@@ -24,7 +24,7 @@ class LatitudeValidator extends ConstraintValidator
         }
 
         // ensure its in the range -90 and 90
-        if ($value > 90 || $value < -90) {
+        if (!($value >= -90 && $value <= 90)) {
             $valid = false;
         }
 

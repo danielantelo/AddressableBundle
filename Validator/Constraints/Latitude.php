@@ -9,5 +9,5 @@ use Symfony\Component\Validator\Constraint;
  */
 class Latitude extends Constraint
 {
-    public $message = 'The value %value% is not valid longitude.';
+    public $message = 'The value %value% is not a valid longitude.';
 }

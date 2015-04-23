@@ -24,6 +24,7 @@ class RelatedAddressableTrait
         if (is_null($this->address)) {
             $this->address = new Address();
         }
+
         return $this->address;
     }
 
@@ -37,6 +38,7 @@ class RelatedAddressableTrait
     public function setAddress(Address $address)
     {
         $this->address = $address;
+
         return $this;
     }
 

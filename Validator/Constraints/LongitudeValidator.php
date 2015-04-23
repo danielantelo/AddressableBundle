@@ -24,7 +24,7 @@ class LongitudeValidator extends ConstraintValidator
         }
 
         // ensure its in the range -180 and 180
-        if ($value['longitude'] > 180 || $value['longitude'] < -180) {
+        if (!($value >= -180 && $value <= 180)) {
             $valid = false;
         }
 
