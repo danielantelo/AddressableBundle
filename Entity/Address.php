@@ -1,6 +1,6 @@
 <?php
 
-namespace Addressable\Bundle\Document;
+namespace Addressable\Bundle\Entity;
 
 use Addressable\Bundle\Validator\Constraints as AddressValidator;
 use Doctrine\ORM\Mapping as ORM;
