@@ -22,7 +22,7 @@ class AddressMapType extends AbstractType
         $builder
             ->add($options['country_field'], $options['type'], $options['options'])
             ->add($options['zipcode_field'], $options['type'], $options['options'])
-            ->add($options['streetnumber_field'], $options['type'], $options['options'])
+            ->add($options['streetnumber_field'], $options['type'], array_merge($options['options'], $options['streetnumber_options']))
             ->add($options['streetname_field'], $options['type'], $options['options'])
             ->add($options['city_field'], $options['type'], $options['options'])
             ->add($options['lat_field'], $options['latlng_type'], array_merge($options['options'], $options['latlng_options']))
@@ -55,6 +55,7 @@ class AddressMapType extends AbstractType
             'city_field' => 'city',
             'lat_field' => 'latitude',
             'lng_field' => 'longitude',
+            'streetnumber_options' => array('required' => false)
         ));
     }
 
