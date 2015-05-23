@@ -4,7 +4,7 @@
             <div id="{{ id }}_container">
                 <input type="text" id="{{ id }}_input" />
                 <button id="{{ id }}_search_button">Search</button>
-                {% if include_current_pos_link %}
+                {% if include_current_position_action %}
                     <a href="#" id="{{ id }}_current_position">Current location</a>
                 {% endif %}
                 <div id="{{ id }}_map_canvas" class="gmap" style="width: {{ map_width }}; height: {{ map_height }}px; margin: 1em 0;"></div>

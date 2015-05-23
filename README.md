@@ -120,28 +120,65 @@ We can override several options:
 ->add(
     'address',
     'addressable_type',
-    array(
-        'type' => 'text',  // the types to render the lat and lng fields as
-        'latlng_type' => 'hidden',  // the types to render the lat and lng fields as
-        'options' => array('read_only' => false), // the options for all fields
-        'latlng_options' => array('read_only' => true),   // the options for just the lat field
-        'error_bubbling' => false,
-        'map_width' => '100%',  // the width of the map
-        'map_height' => 300,     // the height of the map
-        'default_lat' => 51.5,    // the starting position on the map
-        'default_lng' => -0.1245, // the starting position on the map
-        'include_jquery' => false,   // jquery needs to be included above the field (ie not at the bottom of the page)
-        'include_gmaps_js' => true,     // is this the best place to include the google maps javascript?
-        'include_current_pos_link' => false,
-        'country_field' => 'country',
-        'zipcode_field' => 'zipCode',
-        'streetnumber_field' => 'streetNumber',
-        'streetname_field' => 'streetName',
-        'city_field' => 'city',
-        'lat_field' => 'latitude',
-        'lng_field' => 'longitude',
-    )
-)
+     array(
+         'map_width' => '100%',    // the width of the map
+         'map_height' => 300,      // the height of the map
+         'default_lat' => 51.5,    // the starting position on the map
+         'default_lng' => -0.1245, // the starting position on the map
+         'include_jquery' => false,      // whether to include jquery
+         'include_gmaps_js' => true,     // whether to include maps script
+         'include_current_position_action' => false, // whether to include the set current position button
+         'street_number_field' => array(
+             'name' => 'streetNumber',
+             'type' => 'text',
+             'options' => array(
+                 'required' => true
+             )
+         ),
+         'street_name_field' => array(
+             'name' => 'streetName',
+             'type' => 'text',
+             'options' => array(
+                 'required' => true
+             )
+         ),
+         'city_field' => array(
+             'name' => 'city',
+             'type' => 'text',
+             'options' => array(
+                 'required' => true
+             )
+         ),
+         'zipcode_field' => array(
+             'name' => 'zipCode',
+             'type' => 'text',
+             'options' => array(
+                 'required' => true
+             )
+         ),
+         'country_field' => array(
+             'name' => 'country',
+             'type' => 'text',
+             'options' => array(
+                 'required' => true
+             )
+         ),
+         'latitude_field' => array(
+             'name' => 'latitude',
+             'type' => 'hidden',
+             'options' => array(
+                 'required' => false
+             )
+         ),
+         'longitude_field' => array(
+             'name' => 'longitude',
+             'type' => 'hidden',
+             'options' => array(
+                 'required' => false
+             )
+         )
+     )
+);
 ```
 
 

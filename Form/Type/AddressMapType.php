@@ -20,13 +20,13 @@ class AddressMapType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add($options['country_field'], $options['type'], $options['options'])
-            ->add($options['zipcode_field'], $options['type'], $options['options'])
-            ->add($options['streetnumber_field'], $options['type'], array_merge($options['options'], $options['streetnumber_options']))
-            ->add($options['streetname_field'], $options['type'], $options['options'])
-            ->add($options['city_field'], $options['type'], $options['options'])
-            ->add($options['lat_field'], $options['latlng_type'], array_merge($options['options'], $options['latlng_options']))
-            ->add($options['lng_field'], $options['latlng_type'], array_merge($options['options'], $options['latlng_options']))
+            ->add($options['street_number_field']['name'], $options['street_number_field']['type'], $options['street_number_field']['options'])
+            ->add($options['street_name_field']['name'], $options['street_name_field']['type'], $options['street_name_field']['options'])
+            ->add($options['city_field']['name'], $options['city_field']['type'], $options['city_field']['options'])
+            ->add($options['country_field']['name'], $options['country_field']['type'], $options['country_field']['options'])
+            ->add($options['zipcode_field']['name'], $options['zipcode_field']['type'], $options['zipcode_field']['options'])
+            ->add($options['latitude_field']['name'], $options['latitude_field']['type'], $options['latitude_field']['options'])
+            ->add($options['longitude_field']['name'], $options['longitude_field']['type'], $options['longitude_field']['options'])
         ;
     }
 
@@ -36,26 +36,62 @@ class AddressMapType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'type' => 'text',  // the types to render the lat and lng fields as
-            'latlng_type' => 'hidden',  // the types to render the lat and lng fields as
-            'options' => array('read_only' => false), // the options for all fields
-            'latlng_options' => array('read_only' => true),   // the options for just the lat field
-            'error_bubbling' => false,
-            'map_width' => '100%',  // the width of the map
-            'map_height' => 300,     // the height of the map
+            'map_width' => '100%',    // the width of the map
+            'map_height' => 300,      // the height of the map
             'default_lat' => 51.5,    // the starting position on the map
             'default_lng' => -0.1245, // the starting position on the map
-            'include_jquery' => false,   // jquery needs to be included above the field (ie not at the bottom of the page)
-            'include_gmaps_js' => true,     // is this the best place to include the google maps javascript?
-            'include_current_pos_link' => false,
-            'country_field' => 'country',
-            'zipcode_field' => 'zipCode',
-            'streetnumber_field' => 'streetNumber',
-            'streetname_field' => 'streetName',
-            'city_field' => 'city',
-            'lat_field' => 'latitude',
-            'lng_field' => 'longitude',
-            'streetnumber_options' => array('required' => false)
+            'include_jquery' => false,      // whether to include jquery
+            'include_gmaps_js' => true,     // whether to include maps script
+            'include_current_position_action' => false, // whether to include the current position button
+            'street_number_field' => array(
+                'name' => 'streetNumber',
+                'type' => 'text',
+                'options' => array(
+                    'required' => true
+                )
+            ),
+            'street_name_field' => array(
+                'name' => 'streetName',
+                'type' => 'text',
+                'options' => array(
+                    'required' => true
+                )
+            ),
+            'city_field' => array(
+                'name' => 'city',
+                'type' => 'text',
+                'options' => array(
+                    'required' => true
+                )
+            ),
+            'zipcode_field' => array(
+                'name' => 'zipCode',
+                'type' => 'text',
+                'options' => array(
+                    'required' => true
+                )
+            ),
+            'country_field' => array(
+                'name' => 'country',
+                'type' => 'text',
+                'options' => array(
+                    'required' => true
+                )
+            ),
+            'latitude_field' => array(
+                'name' => 'latitude',
+                'type' => 'hidden',
+                'options' => array(
+                    'required' => false
+                )
+            ),
+            'longitude_field' => array(
+                'name' => 'longitude',
+                'type' => 'hidden',
+                'options' => array(
+                    'required' => false
+                )
+            )
         ));
     }
 
@@ -65,13 +101,13 @@ class AddressMapType extends AbstractType
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         // fields
-        $view->vars['lat_field'] = $options['lat_field'];
-        $view->vars['lng_field'] = $options['lng_field'];
-        $view->vars['country_field'] = $options['country_field'];
-        $view->vars['zipcode_field'] = $options['zipcode_field'];
-        $view->vars['streetnumber_field'] = $options['streetnumber_field'];
-        $view->vars['streetname_field'] = $options['streetname_field'];
-        $view->vars['city_field'] = $options['city_field'];
+        $view->vars['lat_field'] = $options['latitude_field']['name'];
+        $view->vars['lng_field'] = $options['longitude_field']['name'];
+        $view->vars['country_field'] = $options['country_field']['name'];
+        $view->vars['zipcode_field'] = $options['zipcode_field']['name'];
+        $view->vars['streetnumber_field'] = $options['street_number_field']['name'];
+        $view->vars['streetname_field'] = $options['street_name_field']['name'];
+        $view->vars['city_field'] = $options['city_field']['name'];
         // conf
         $view->vars['map_width'] = $options['map_width'];
         $view->vars['map_height'] = $options['map_height'];
@@ -79,7 +115,7 @@ class AddressMapType extends AbstractType
         $view->vars['default_lng'] = $options['default_lng'];
         $view->vars['include_jquery'] = $options['include_jquery'];
         $view->vars['include_gmaps_js'] = $options['include_gmaps_js'];
-        $view->vars['include_current_pos_link'] = $options['include_current_pos_link'];
+        $view->vars['include_current_position_action'] = $options['include_current_position_action'];
     }
 
     /**
