@@ -36,7 +36,8 @@
       var mapOptions = {
         zoom: this.settings.default_zoom,
         center: center,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        scrollwheel: false,
+        mapTypeId: google.maps.MapTypeId.TERRAIN
       };
       this.map = new google.maps.Map(this.mapElement[0],
         mapOptions);
