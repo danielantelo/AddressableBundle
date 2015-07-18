@@ -1,6 +1,6 @@
 <?php
 
-namespace Addressable\Bundle\Model\Traits\PHPCR;
+namespace Addressable\Bundle\Model\Traits\ORM;
 
 use Addressable\Bundle\Entity\Address;
 
