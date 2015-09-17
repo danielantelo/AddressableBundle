@@ -120,9 +120,10 @@
             $this.getAddressComponent(
               'street_number', results[0],
               false));
+          // execute any custom callback code
+          this.settings.callback(location, this);
         }
       });
-      this.settings.callback(location, this);
     },
     addMarker: function(center) {
       if (this.marker) {
