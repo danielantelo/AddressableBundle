@@ -13,7 +13,6 @@ Under development.
 
 Next steps:
 
-- Add Bing map option/alternative
 - Geo-location awareness (search by radius, distance calculator, route mapping, etc)
 
 
@@ -37,25 +36,14 @@ Register the bundle in your `app/AppKernel.php`:
 new Addressable\Bundle\AddressableBundle(),
 ```
 
-Add the bundle to assetic in your config file:
-
-```yaml
-# app/config/config.yml
-  
-# Assetic Configuration
-assetic:
-    bundles: [ 'AddressableBundle' ]
-```
-
 Include the twig template for the type layout.
 
 ```yaml
 # app/config/config.yml
 
 twig:
-    form:
-        resources:
-            - 'AddressableBundle:Form:fields.html.twig'
+    form_themes:
+          - AddressableBundle:Form:fields.html.twig
 ```
 
 Now your entity or document must:
@@ -68,9 +56,8 @@ Now your entity or document must:
     use Addressable\Bundle\Model\AddressableInterface;
     use Addressable\Bundle\Model\Traits\ORM\AddressableTrait;
 
-    class YourEntity implementes AddressableInterface 
+    class YourEntity implements AddressableInterface
     {
-
         use AddressableTrait;
         
         /**
@@ -79,7 +66,6 @@ Now your entity or document must:
         protected $yourOtherField;
         
         ...
-        
     }
 ```
 
@@ -89,22 +75,26 @@ Once your entity is setup, we can add the address map selector to your forms in 
 
 ```php
 
+// if you are using standard symfony form type
+public function buildForm(FormBuilderInterface $builder, array $options)
+{
+    $builder
+        ->add('address', AddressMapType::class, array(
+            'google_api_key' => 'yourKeyHere'
+        ))
+    ...
+}
+
 // if you are using Sonata Admin
 protected function configureFormFields(FormMapper $formMapper)
 {
     $formMapper
         ->with('Location')
-            ->add('address', 'address_map_type', array())
+            ->add('address', AddressMapType::class, array(
+                'google_api_key' => 'yourKeyHere'
+            ))
         ->end()
         ...
-}
-
-// if you are using standard symfony form type
-public function buildForm(FormBuilderInterface $builder, array $options)
-{
-    $builder
-        ->add('address', 'address_map_type', array())
-    ...
 }
 
 ```
@@ -119,15 +109,14 @@ We can override several options:
 ```php
 ->add(
     'address',
-    'addressable_type',
+     AddressMapType::class,
      array(
+        'google_api_key' => 'yourKeyHere',
          'map_width' => '100%',    // the width of the map
-         'map_height' => 300,      // the height of the map
+         'map_height' => '300px',  // the height of the map
          'default_lat' => 51.5,    // the starting position on the map
          'default_lng' => -0.1245, // the starting position on the map
-         'include_jquery' => false,      // whether to include jquery
-         'include_gmaps_js' => true,     // whether to include maps script
-         'include_current_position_action' => false, // whether to include the set current position button
+         'include_current_position_action' => true, // whether to include the set current position button
          'street_number_field' => array(
              'name' => 'streetNumber',
              'type' => 'text',
@@ -179,6 +168,27 @@ We can override several options:
          )
      )
 );
+```
+
+Further Customization
+---------------------
+
+If you don't want the bundle to use it's own script you can override the *address_map_scripts* block to be empty; and
+then simply copy and paste the javascript in vendor/daa/addressable-bundle/Resources/public/js/address_map.js
+to your own js files.
+
+To add additional functionality after address updates, simply override the block *address_map_callback* and extend to add
+the additional functionality (or make it empty and define var gmap_callback in your js code).
+
+```
+    {% block address_map_callback %}
+        <script>
+            var gmap_callback = function(location, gmap){
+                // your callback code here
+            }
+        </script>
+    {% endblock %}
+
 ```
 
 

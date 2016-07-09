@@ -6,8 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\OptionsResolver\Options;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Form type for adding a map to select a full address.
@@ -33,16 +32,15 @@ class AddressMapType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
+            'google_api_key' => '',
             'map_width' => '100%',    // the width of the map
-            'map_height' => 300,      // the height of the map
+            'map_height' => '300px',      // the height of the map
             'default_lat' => 51.5,    // the starting position on the map
             'default_lng' => -0.1245, // the starting position on the map
-            'include_jquery' => false,      // whether to include jquery
-            'include_gmaps_js' => true,     // whether to include maps script
-            'include_current_position_action' => false, // whether to include the current position button
+            'include_current_position_action' => true, // whether to include the current position button
             'street_number_field' => array(
                 'name' => 'streetNumber',
                 'type' => 'text',
@@ -100,6 +98,7 @@ class AddressMapType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
+        $view->vars['google_api_key'] = $options['google_api_key'];
         // fields
         $view->vars['lat_field'] = $options['latitude_field']['name'];
         $view->vars['lng_field'] = $options['longitude_field']['name'];
@@ -113,16 +112,6 @@ class AddressMapType extends AbstractType
         $view->vars['map_height'] = $options['map_height'];
         $view->vars['default_lat'] = $options['default_lat'];
         $view->vars['default_lng'] = $options['default_lng'];
-        $view->vars['include_jquery'] = $options['include_jquery'];
-        $view->vars['include_gmaps_js'] = $options['include_gmaps_js'];
         $view->vars['include_current_position_action'] = $options['include_current_position_action'];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'address_map_type';
     }
 }

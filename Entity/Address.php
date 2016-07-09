@@ -2,6 +2,7 @@
 
 namespace Addressable\Bundle\Entity;
 
+use Addressable\Bundle\Model\AddressableInterface;
 use Addressable\Bundle\Validator\Constraints as AddressValidator;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -10,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Entity representing an address.
  * You must extend this class and add an id and entity annotation.
  */
-class Address
+class Address implements AddressableInterface
 {
     /**
      * @ORM\Column(type="string")

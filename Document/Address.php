@@ -2,6 +2,7 @@
 
 namespace Addressable\Bundle\Document;
 
+use Addressable\Bundle\Model\AddressableInterface;
 use Addressable\Bundle\Validator\Constraints as AddressValidator;
 use Doctrine\ODM\PHPCR\Mapping\Annotations as PHPCR;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -11,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @PHPCR\Document()
  */
-class Address
+class Address implements AddressableInterface
 {
     /**
      * @PHPCR\Id()
