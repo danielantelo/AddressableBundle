@@ -18,7 +18,9 @@ class LongitudeValidator extends ConstraintValidator
     {
         $valid = true;
 
-        if($value === null) return $valid;
+        if ($value === null) {
+            return $valid;
+        }
 
         // ensure its the right format
         if (!preg_match('/^[0-9\-\.]+$/', $value, $matches)) {
@@ -35,6 +37,6 @@ class LongitudeValidator extends ConstraintValidator
                 $constraint->message,
                 array('%value%' => $value)
             );
-        }        
+        }
     }
 }

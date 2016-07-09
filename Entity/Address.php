@@ -55,7 +55,8 @@ class Address
      */
     public function __toString()
     {
-        $address = sprintf('%s %s %s %s %s',
+        $address = sprintf(
+            '%s %s %s %s %s',
             $this->getStreetNumber(),
             $this->getStreetName(),
             $this->getCity(),

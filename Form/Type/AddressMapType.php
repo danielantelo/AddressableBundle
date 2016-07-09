@@ -19,13 +19,41 @@ class AddressMapType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add($options['street_number_field']['name'], $options['street_number_field']['type'], $options['street_number_field']['options'])
-            ->add($options['street_name_field']['name'], $options['street_name_field']['type'], $options['street_name_field']['options'])
-            ->add($options['city_field']['name'], $options['city_field']['type'], $options['city_field']['options'])
-            ->add($options['country_field']['name'], $options['country_field']['type'], $options['country_field']['options'])
-            ->add($options['zipcode_field']['name'], $options['zipcode_field']['type'], $options['zipcode_field']['options'])
-            ->add($options['latitude_field']['name'], $options['latitude_field']['type'], $options['latitude_field']['options'])
-            ->add($options['longitude_field']['name'], $options['longitude_field']['type'], $options['longitude_field']['options'])
+            ->add(
+                $options['street_number_field']['name'],
+                $options['street_number_field']['type'],
+                $options['street_number_field']['options']
+            )
+            ->add(
+                $options['street_name_field']['name'],
+                $options['street_name_field']['type'],
+                $options['street_name_field']['options']
+            )
+            ->add(
+                $options['city_field']['name'],
+                $options['city_field']['type'],
+                $options['city_field']['options']
+            )
+            ->add(
+                $options['country_field']['name'],
+                $options['country_field']['type'],
+                $options['country_field']['options']
+            )
+            ->add(
+                $options['zipcode_field']['name'],
+                $options['zipcode_field']['type'],
+                $options['zipcode_field']['options']
+            )
+            ->add(
+                $options['latitude_field']['name'],
+                $options['latitude_field']['type'],
+                $options['latitude_field']['options']
+            )
+            ->add(
+                $options['longitude_field']['name'],
+                $options['longitude_field']['type'],
+                $options['longitude_field']['options']
+            )
         ;
     }
 
