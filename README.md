@@ -3,13 +3,14 @@ Symfony2 Addressable Bundle
 
 This is a Symfony2 bundle which facilitates making entities addressable and geo location aware.
 
-It includes a google map form type to search and set addresses (including lat/lng).
+It includes a google map form type to search and set addresses (including lat/lng), and a service helper to ease
+calculating distances, sorting and filtering within a radius, objects with latitude and longitude.
 
 
 Installation
 ------------
 
-Add the following to ``:
+Add the following to composer.json:
 
 ```yaml
 #composer.json
@@ -193,8 +194,8 @@ Sonata implementation:
 Geospatial Helper Service
 -------------------------
 
-From your controller you can get the the *addressable_bundle.geospatial_helper* service; from any where else you
-can instantiate the GeospatialHelper class.
+From your controller you can get the the *addressable_bundle.geospatial_helper* service; from anywhere else you
+can instantiate the GeospatialHelper class directly.
 
 Examples:
 
