@@ -5,19 +5,20 @@ namespace Addressable\Bundle\Model;
 /**
  * Describes object that are addressable.
  */
-interface AddressableInterface
+interface AddressableInterface extends GeoPointInterface
 {
     /**
-     * Returns the latitude of the address.
+     * Returns all address fields in an array(
+     *       'country' => $this->getCountry(),
+     *       'zipCode' => $this->getZipCode(),
+     *       'streetNumber' => $this->getStreetNumber(),
+     *       'streetName' => $this->getStreetName(),
+     *       'city' => $this->getCity(),
+     *       'latitude' => $this->getLatitude(),
+     *       'longitude' => $this->getLongitude()
+     *  )
      *
-     * @return float
+     * @return array
      */
-    public function getLatitude();
-
-    /**
-     * Returns the latitude of the address.
-     *
-     * @return float
-     */
-    public function getLongitude();
+    public function getAddress();
 }

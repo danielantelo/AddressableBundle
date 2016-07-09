@@ -1,2 +1,3 @@
 services:
-
+    addressable_bundle.geospatial_helper:
+        class: Addressable\Bundle\Services\GeospatialHelper

@@ -4,6 +4,7 @@ namespace Addressable\Bundle\Tests\Unit\Form\Type;
 
 use Addressable\Bundle\Validator\Constraints\Latitude;
 use Addressable\Bundle\Validator\Constraints\LatitudeValidator;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Ensures correct behaviour of LatitudeValidator
@@ -20,7 +21,7 @@ class LatitudeValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $constraint = new Latitude();
         $validator = new LatitudeValidator();
-        $context = $this->getMockBuilder('Symfony\\Component\\Validator\\Context\\ExecutionContextInterface')
+        $context = $this->getMockBuilder(ExecutionContextInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $context->expects($this->never())
@@ -40,12 +41,12 @@ class LatitudeValidatorTest extends \PHPUnit_Framework_TestCase
     {
         $constraint = new Latitude();
         $validator = new LatitudeValidator();
-        $context = $this->getMockBuilder('Symfony\\Component\\Validator\\Context\\ExecutionContextInterface')
+        $context = $this->getMockBuilder(ExecutionContextInterface::class)
             ->disableOriginalConstructor()
             ->getMock();
         $context->expects($this->once())
             ->method('addViolation')
-            ->with('The value %value% is not a valid longitude.');
+            ->with('The value %value% is not a valid latitude.');
 
         $validator->initialize($context);
         $validator->validate($data, $constraint);

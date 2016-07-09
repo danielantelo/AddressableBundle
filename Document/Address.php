@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @PHPCR\Document()
  */
-class Address implements AddressableInterface
+class Address
 {
     /**
      * @PHPCR\Id()

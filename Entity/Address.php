@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Entity representing an address.
  * You must extend this class and add an id and entity annotation.
  */
-class Address implements AddressableInterface
+class Address
 {
     /**
      * @ORM\Column(type="string")

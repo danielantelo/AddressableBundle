@@ -6,16 +6,6 @@ This is a Symfony2 bundle which facilitates making entities addressable and geo 
 It includes a google map form type to search and set addresses (including lat/lng).
 
 
-Status
-------
-
-Under development.
-
-Next steps:
-
-- Geo-location awareness (search by radius, distance calculator, route mapping, etc)
-
-
 Installation
 ------------
 
@@ -198,3 +188,33 @@ Screenshot
 Sonata implementation:
 
 ![View screenshot](https://raw.githubusercontent.com/danielanteloagra/AddressableBundle/master/screenshot.png)
+
+
+Geospatial Helper Service
+-------------------------
+
+From your controller you can get the the *addressable_bundle.geospatial_helper* service; from any where else you
+can instantiate the GeospatialHelper class.
+
+Examples:
+
+```
+  public function symfonyControllerAction()
+  {
+      $helper = $this->get('addressable_bundle.geospatial_helper');
+
+      $centerPoint = new YourEntity(); // must implement AddressableInterface or GeoPointInterface
+      $point1 = new YourEntity(); // must implement AddressableInterface or GeoPointInterface
+      $point2 = new YourEntity(); // must implement AddressableInterface or GeoPointInterface
+      $points = array($point1, $point2);
+
+      // getting distance in KM between two points
+      $distanceInKm = $helper->getDistanceBetweenPoints($point1, $point2);
+
+      // filtering an array of points by radius from a center point
+      $pointsWithinRadius = $helper->filterPointsWithinRadius($centerPoint, $points, $radius);
+
+      // sort an array of addressable objects to be ordered by distance from a center point
+      $orderedPoints = $helper->sortAroundCenterPoint($centerPoint, $points);
+  }
+```
