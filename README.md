@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/danielanteloagra/AddressableBundle.svg?branch=master)](https://travis-ci.org/danielanteloagra/AddressableBundle)
+
 Symfony2 Addressable Bundle
 ===========================
 
