@@ -18,6 +18,8 @@ class LongitudeValidator extends ConstraintValidator
     {
         $valid = true;
 
+        if($value === null) return $valid;
+
         // ensure its the right format
         if (!preg_match('/^[0-9\-\.]+$/', $value, $matches)) {
             $valid = false;
