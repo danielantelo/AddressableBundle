@@ -3,6 +3,8 @@
 namespace Addressable\Bundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
@@ -72,49 +74,49 @@ class AddressMapType extends AbstractType
             'include_current_position_action' => true, // whether to include the current position button
             'street_number_field' => array(
                 'name' => 'streetNumber',
-                'type' => 'text',
+                'type' => TextType::class,
                 'options' => array(
                     'required' => true
                 )
             ),
             'street_name_field' => array(
                 'name' => 'streetName',
-                'type' => 'text',
+                'type' => TextType::class,
                 'options' => array(
                     'required' => true
                 )
             ),
             'city_field' => array(
                 'name' => 'city',
-                'type' => 'text',
+                'type' => TextType::class,
                 'options' => array(
                     'required' => true
                 )
             ),
             'zipcode_field' => array(
                 'name' => 'zipCode',
-                'type' => 'text',
+                'type' => TextType::class,
                 'options' => array(
                     'required' => true
                 )
             ),
             'country_field' => array(
                 'name' => 'country',
-                'type' => 'text',
+                'type' => TextType::class,
                 'options' => array(
                     'required' => true
                 )
             ),
             'latitude_field' => array(
                 'name' => 'latitude',
-                'type' => 'hidden',
+                'type' => HiddenType::class,
                 'options' => array(
                     'required' => false
                 )
             ),
             'longitude_field' => array(
                 'name' => 'longitude',
-                'type' => 'hidden',
+                'type' => HiddenType::class,
                 'options' => array(
                     'required' => false
                 )
