@@ -94,7 +94,18 @@ protected function configureFormFields(FormMapper $formMapper)
 public function indexAction(Request $request)
 {
     $entity = new AddressableEntity();
-    $form = $this->createForm(AddressMapType::class, $entity);
+    $form = $this->createForm(AddressMapType::class, $entity, array(
+        'google_api_key' => 'yourKeyHere'
+    ));
+    
+    /* or alternatively something like:
+    $form = $this->createFormBuilder($entity)
+        ->add('address', AddressMapType::class, array(
+            'google_api_key' => 'yourKeyHere'
+        ))
+        ->getForm()
+    ;
+    */
 
     // replace this example code with whatever you need
     return $this->render('default/index.html.twig', [
