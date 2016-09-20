@@ -19,7 +19,7 @@ Add the following to composer.json:
 
 "require": {
     ...
-    "daa/addressable-bundle": "dev-master"
+    "daa/addressable-bundle": "0.*"
 }
 ```
 
@@ -88,6 +88,25 @@ protected function configureFormFields(FormMapper $formMapper)
             ))
         ->end()
         ...
+}
+
+// if you are doing it directly in a controller
+public function indexAction(Request $request)
+{
+    $entity = new YourAddressableEntity();
+
+    $form = $this->createFormBuilder($entity)
+        ->add('address', AddressMapType::class, array(
+            'google_api_key' => 'yourKeyHere'
+        ))
+        ->getForm()
+    ;
+
+    // replace this example code with whatever you need
+    return $this->render('default/index.html.twig', [
+        'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        'form' => $form->createView(),
+    ]);
 }
 
 ```
