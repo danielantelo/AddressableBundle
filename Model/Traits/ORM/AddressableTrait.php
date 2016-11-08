@@ -36,6 +36,16 @@ trait AddressableTrait
     protected $zipCode;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $administrativeAreaLevel1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $administrativeAreaLevel2;
+
+    /**
      * @ORM\Column(type="float", nullable=true)
      * @Address\Latitude()
      */
@@ -212,6 +222,8 @@ trait AddressableTrait
             'streetNumber' => $this->getStreetNumber(),
             'streetName' => $this->getStreetName(),
             'city' => $this->getCity(),
+            'administrativeAreaLevel1' => $this->getAdministrativeAreaLevel1(),
+            'administrativeAreaLevel2' => $this->getAdministrativeAreaLevel2(),
             'latitude' => $this->getLatitude(),
             'longitude' => $this->getLongitude(),
         );
@@ -222,6 +234,8 @@ trait AddressableTrait
      *       'zipCode' => $this->getZipCode(),
      *       'streetNumber' => $this->getStreetNumber(),
      *       'streetName' => $this->getStreetName(),
+     *       'administrativeAreaLevel1' => $this->getAdministrativeAreaLevel1(),
+     *       'administrativeAreaLevel2' => $this->getAdministrativeAreaLevel2(),
      *       'city' => $this->getCity(),
      *       'latitude' => $this->getLatitude(),
      *       'longitude' => $this->getLongitude()
@@ -237,8 +251,43 @@ trait AddressableTrait
         $this->setCity($address['city']);
         $this->setZipCode($address['zipCode']);
         $this->setStreetNumber($address['streetNumber']);
+        $this->setAdministrativeAreaLevel1($address['administrativeAreaLevel1']);
+        $this->setAdministrativeAreaLevel2($address['administrativeAreaLevel2']);
         $this->setStreetName($address['streetName']);
         $this->setLatitude($address['latitude']);
         $this->setLongitude($address['longitude']);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrativeAreaLevel1()
+    {
+        return $this->administrativeAreaLevel1;
+    }
+
+    /**
+     * @param mixed $administrativeAreaLevel1
+     */
+    public function setAdministrativeAreaLevel1($administrativeAreaLevel1)
+    {
+        $this->administrativeAreaLevel1 = $administrativeAreaLevel1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrativeAreaLevel2()
+    {
+        return $this->administrativeAreaLevel2;
+    }
+
+    /**
+     * @param mixed $administrativeAreaLevel2
+     */
+    public function setAdministrativeAreaLevel2($administrativeAreaLevel2)
+    {
+        $this->administrativeAreaLevel2 = $administrativeAreaLevel2;
+    }
+
 }

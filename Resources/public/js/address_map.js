@@ -14,6 +14,8 @@ function AddressMap(settings) {
     this.streetNameField = document.getElementById(this.settings.streetNameFieldId);
     this.streetNumberField = document.getElementById(this.settings.streetNumberFieldId);
     this.cityField = document.getElementById(this.settings.cityFieldId);
+    this.administrativeAreaLevel1Field = document.getElementById(this.settings.administrativeAreaLevel1FieldId);
+    this.administrativeAreaLevel2Field = document.getElementById(this.settings.administrativeAreaLevel2FieldId);
 }
 
 AddressMap.prototype.init = function() {
@@ -131,6 +133,8 @@ AddressMap.prototype.updateLocation = function(location) {
             _self.zipCodeField.value = _self.getAddressComponent('postal_code', results[0], false);
             _self.streetNameField.value = _self.getAddressComponent('route', results[0], false);
             _self.streetNumberField.value = _self.getAddressComponent('street_number', results[0], false);
+            _self.administrativeAreaLevel1Field.value = _self.getAddressComponent('administrative_area_level_1', results[0], false);
+            _self.administrativeAreaLevel2Field.value = _self.getAddressComponent('administrative_area_level_2', results[0], false);
             // execute any custom callback code
             _self.settings.callback(location, _self);
         }

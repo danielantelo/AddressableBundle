@@ -3,6 +3,12 @@
 {% block field %}
     {{ object.streetNumber }} {{ object.streetName }}<br>
     {{ object.city }}<br>
+    {% if object.administrativeAreaLevel1 %}
+        {{ object.administrativeAreaLevel1 }}<br/>
+    {% endif %}
+    {% if object.administrativeAreaLevel2 %}
+        {{ object.administrativeAreaLevel2 }}<br/>
+    {% endif %}
     {{ object.country }}<br>
     {{ object.zipCode }}
 {% endblock %}

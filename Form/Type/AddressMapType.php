@@ -47,6 +47,16 @@ class AddressMapType extends AbstractType
                 $options['zipcode_field']['options']
             )
             ->add(
+                $options['administrativeAreaLevel1_field']['name'],
+                $options['administrativeAreaLevel1_field']['type'],
+                $options['administrativeAreaLevel1_field']['options']
+            )
+            ->add(
+                $options['administrativeAreaLevel2_field']['name'],
+                $options['administrativeAreaLevel2_field']['type'],
+                $options['administrativeAreaLevel2_field']['options']
+            )
+            ->add(
                 $options['latitude_field']['name'],
                 $options['latitude_field']['type'],
                 $options['latitude_field']['options']
@@ -100,6 +110,20 @@ class AddressMapType extends AbstractType
                     'required' => true
                 )
             ),
+            'administrativeAreaLevel1_field' => array(
+                'name' => 'administrativeAreaLevel1',
+                'type' => TextType::class,
+                'options' => array(
+                    'required' => false
+                )
+            ),
+            'administrativeAreaLevel2_field' => array(
+                'name' => 'administrativeAreaLevel2',
+                'type' => TextType::class,
+                'options' => array(
+                    'required' => false
+                )
+            ),
             'country_field' => array(
                 'name' => 'country',
                 'type' => TextType::class,
@@ -139,6 +163,8 @@ class AddressMapType extends AbstractType
         $view->vars['streetnumber_field'] = $options['street_number_field']['name'];
         $view->vars['streetname_field'] = $options['street_name_field']['name'];
         $view->vars['city_field'] = $options['city_field']['name'];
+        $view->vars['administrativeAreaLevel1_field'] = $options['administrativeAreaLevel1_field']['name'];
+        $view->vars['administrativeAreaLevel2_field'] = $options['administrativeAreaLevel2_field']['name'];
         // conf
         $view->vars['map_width'] = $options['map_width'];
         $view->vars['map_height'] = $options['map_height'];
