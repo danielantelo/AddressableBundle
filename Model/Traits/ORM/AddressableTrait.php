@@ -289,5 +289,4 @@ trait AddressableTrait
     {
         $this->administrativeAreaLevel2 = $administrativeAreaLevel2;
     }
-
 }
