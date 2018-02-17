@@ -10,6 +10,7 @@ function AddressMap(settings) {
     this.latField = document.getElementById(this.settings.latFieldId);
     this.lngField = document.getElementById(this.settings.lngFieldId);
     this.countryField = document.getElementById(this.settings.countryFieldId);
+    this.countryFieldAsShortCode = this.settings.countryFieldAsShortCode;
     this.zipCodeField = document.getElementById(this.settings.zipCodeFieldId);
     this.streetNameField = document.getElementById(this.settings.streetNameFieldId);
     this.streetNumberField = document.getElementById(this.settings.streetNumberFieldId);
@@ -126,7 +127,9 @@ AddressMap.prototype.updateLocation = function(location) {
         'latLng': location
     }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-            _self.countryField.value = _self.getAddressComponent('country', results[0], false);
+            _self.countryField.value = _self.getAddressComponent('country', results[0], _self.countryFieldAsShortCode);
+            // this is needed by several select niceners (select2 chozen etc)
+            _self.countryField.dispatchEvent(new Event('change'));
             _self.cityField.value = _self.getAddressComponent('locality', results[0], false);
             _self.zipCodeField.value = _self.getAddressComponent('postal_code', results[0], false);
             _self.streetNameField.value = _self.getAddressComponent('route', results[0], false);
