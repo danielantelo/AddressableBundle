@@ -14,6 +14,8 @@ interface AddressableInterface extends GeoPointInterface
      *       'streetNumber' => $this->getStreetNumber(),
      *       'streetName' => $this->getStreetName(),
      *       'city' => $this->getCity(),
+     *       'administrativeAreaLevel1' => $this->getAdministrativeAreaLevel1(),
+     *       'administrativeAreaLevel2' => $this->getAdministrativeAreaLevel2(),
      *       'latitude' => $this->getLatitude(),
      *       'longitude' => $this->getLongitude()
      *  )

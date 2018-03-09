@@ -55,6 +55,16 @@ class Address
     protected $country;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    protected $administrativeAreaLevel1;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $administrativeAreaLevel2;
+
+    /**
      * @PHPCR\Float()
      * @AddressValidator\Latitude()
      */
@@ -319,5 +329,37 @@ class Address
         $this->longitude = $longitude;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrativeAreaLevel1()
+    {
+        return $this->administrativeAreaLevel1;
+    }
+
+    /**
+     * @param mixed $administrativeAreaLevel1
+     */
+    public function setAdministrativeAreaLevel1($administrativeAreaLevel1)
+    {
+        $this->administrativeAreaLevel1 = $administrativeAreaLevel1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAdministrativeAreaLevel2()
+    {
+        return $this->administrativeAreaLevel2;
+    }
+
+    /**
+     * @param mixed $administrativeAreaLevel2
+     */
+    public function setAdministrativeAreaLevel2($administrativeAreaLevel2)
+    {
+        $this->administrativeAreaLevel2 = $administrativeAreaLevel2;
     }
 }
