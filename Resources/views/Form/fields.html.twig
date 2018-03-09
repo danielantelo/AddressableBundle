@@ -48,6 +48,7 @@
                 latFieldId: '{{ attribute(form, lat_field).vars.id }}',
                 lngFieldId: '{{ attribute(form, lng_field).vars.id }}',
                 countryFieldId: '{{ attribute(form, country_field).vars.id }}',
+                countryFieldAsShortCode: {{ 'country' in attribute(form, country_field).vars.block_prefixes ? 'true' : 'false' }},
                 zipCodeFieldId: '{{ attribute(form, zipcode_field).vars.id }}',
                 streetNameFieldId: '{{ attribute(form, streetname_field).vars.id }}',
                 streetNumberFieldId: '{{ attribute(form, streetnumber_field).vars.id }}',

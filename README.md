@@ -187,6 +187,13 @@ We can override several options:
 );
 ```
 
+Country Features
+---------------------
+If you use "country" type (Symfony\Component\Form\Extension\Core\Type\CountryType)
+for the "country_field" the geospatial helper uses googles returned shortcode to populate
+the country short code in the dropdown
+ 
+
 Further Customization
 ---------------------
 
