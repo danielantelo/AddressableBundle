@@ -48,10 +48,14 @@ Now your entity or document must:
 
     use Addressable\Bundle\Model\AddressableInterface;
     use Addressable\Bundle\Model\Traits\ORM\AddressableTrait;
+    # for optional email, tel, fax fields also include and use these
+    use Addressable\Bundle\Model\ContactableInterface;
+    use Addressable\Bundle\Model\Traits\ORM\ContactableTrait;
 
-    class YourEntity implements AddressableInterface
+    class YourEntity implements AddressableInterface, ContactableInterface
     {
         use AddressableTrait;
+        use ContactableTrait;
         
         /**
          * @ORM\Column(type="text")
@@ -68,6 +72,7 @@ Once your entity is setup, we can add the address map selector to your forms in 
 
 ```php
 use Addressable\Bundle\Form\Type\AddressMapType;
+use Addressable\Bundle\Form\Type\ContactDetailsType; # optional email, tel, fax
 
 // if you are using standard symfony form type
 public function buildForm(FormBuilderInterface $builder, array $options)
@@ -104,13 +109,13 @@ public function indexAction(Request $request)
         'google_api_key' => 'yourKeyHere'
     ));
     
-    /* or alternatively something like:
+    /* or alternatively when using the nested/related versions:
     $form = $this->createFormBuilder($entity)
         ->add('address', AddressMapType::class, array(
             'google_api_key' => 'yourKeyHere'
         ))
-        ->getForm()
-    ;
+        ->add('contactDetails', ContactDetailsType::class)
+        ->getForm();
     */
 
     // replace this example code with whatever you need
@@ -203,6 +208,35 @@ We can override several options:
              )
          )
      )
+);
+
+# And same for the optional contact details fields
+->add(
+    'contactDetails',
+    ContactDetailsType:class,
+    array(
+        'email_field' => array(
+            'name' => 'email',
+            'type' => TextType::class,
+            'options' => array(
+                'required' => false
+            )
+        ),
+        'phone_field' => array(
+            'name' => 'phoneNumber',
+            'type' => TextType::class,
+            'options' => array(
+                'required' => false
+            )
+        ),
+        'fax_field' => array(
+            'name' => 'fax',
+            'type' => TextType::class,
+            'options' => array(
+                'required' => false
+            )
+        ),
+    )
 );
 ```
 

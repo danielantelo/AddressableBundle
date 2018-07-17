@@ -4,10 +4,13 @@ namespace AppBundle\Entity;
 
 use Addressable\Bundle\Model\AddressableInterface;
 use Addressable\Bundle\Model\Traits\ORM\AddressableTrait;
+use Addressable\Bundle\Model\ContactableInterface;
+use Addressable\Bundle\Model\Traits\ORM\ContactableTrait;
 
-class Buyer implements AddressableInterface
+class Buyer implements AddressableInterface, ContactableInterface
 {
     use AddressableTrait;
+    use ContactableTrait;
     
     /**
      * @ORM\Column(type="text")
