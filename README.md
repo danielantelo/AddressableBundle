@@ -5,8 +5,7 @@ Symfony2 Addressable Bundle
 
 This is a Symfony2 bundle which facilitates making entities addressable and geo location aware.
 
-It includes a google map form type to search and set addresses (including lat/lng), and a service helper to ease
-calculating distances, sorting and filtering within a radius, objects with latitude and longitude.
+It includes a google map form type to search for and set addresses (with lat/lng), and a geo spatial service to ease calculating distances, sorting and filtering within a radius, etc using these objects with latitude and longitude.
 
 
 Installation
@@ -36,7 +35,8 @@ Include the twig template for the type layout.
 
 twig:
     form_themes:
-          - AddressableBundle:Form:fields.html.twig
+          - '@Addressable/Form/fields.html.twig' 
+          #- AddressableBundle:Form:fields.html.twig (in older versions)
 ```
 
 Now your entity or document must:
@@ -67,6 +67,7 @@ Note, if you are using an older version of PHP which does not support traits, th
 Once your entity is setup, we can add the address map selector to your forms in the following ways:
 
 ```php
+use Addressable\Bundle\Form\Type\AddressMapType;
 
 // if you are using standard symfony form type
 public function buildForm(FormBuilderInterface $builder, array $options)
@@ -90,7 +91,12 @@ protected function configureFormFields(FormMapper $formMapper)
         ...
 }
 
-// if you are doing it directly in a controller
+/**
+ * if you are doing it directly in a controller Action
+ * 
+ * @Route("/", name="homepage")
+ * @Template("@App/page.html.twig")
+ */
 public function indexAction(Request $request)
 {
     $entity = new AddressableEntity();
@@ -108,10 +114,9 @@ public function indexAction(Request $request)
     */
 
     // replace this example code with whatever you need
-    return $this->render('default/index.html.twig', [
-        'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+    return [
         'form' => $form->createView(),
-    ]);
+    ];
 }
 
 ```
@@ -179,6 +184,20 @@ We can override several options:
          'longitude_field' => array(
              'name' => 'longitude',
              'type' => 'hidden',
+             'options' => array(
+                 'required' => false
+             )
+         ),
+         'administrative_area_level_1_field' => array(
+             'name' => 'administrativeAreaLevel1',
+             'type' => 'text',
+             'options' => array(
+                 'required' => false
+             )
+         ),
+         'administrative_area_level_2_field' => array(
+             'name' => 'administrativeAreaLevel2',
+             'type' => 'text',
              'options' => array(
                  'required' => false
              )

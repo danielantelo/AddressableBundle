@@ -75,7 +75,6 @@ class AddressMapType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'secure' => false,
             'google_api_key' => '',
             'map_width' => '100%',    // the width of the map
             'map_height' => '300px',      // the height of the map
@@ -153,7 +152,6 @@ class AddressMapType extends AbstractType
      */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
-        $view->vars['secure'] = $options['secure'];
         $view->vars['google_api_key'] = $options['google_api_key'];
         // fields
         $view->vars['lat_field'] = $options['latitude_field']['name'];

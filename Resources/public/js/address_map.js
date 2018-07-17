@@ -26,7 +26,7 @@ AddressMap.prototype.init = function() {
     } else {
         var script = document.createElement("script");
         script.type = 'text/javascript';
-        script.src = (this.settings.secure ? 'https' : 'http' ) + '://maps.google.com/maps/api/js?v=3.25&key=' + this.settings.googleApiKey + '&callback=' + this.settings.googleMapsLoadedCallback;
+        script.src = '//maps.google.com/maps/api/js?v=3.25&key=' + this.settings.googleApiKey + '&callback=' + this.settings.googleMapsLoadedCallback;
         document.body.appendChild(script);
     }
 
@@ -58,6 +58,10 @@ AddressMap.prototype.handleGoogleMapApiReady = function() {
 
 AddressMap.prototype.bindUseCurrentPositionEvent = function() {
     var _self = this;
+    if (!this.currentPosition) {
+        return;
+    }
+    
     this.currentPosition.onclick = function(event) {
         event.preventDefault();
         if (navigator.geolocation) {
