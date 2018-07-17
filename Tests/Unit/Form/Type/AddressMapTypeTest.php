@@ -21,7 +21,7 @@ class AddressMapTypeTest extends TypeTestCase
     {
         // create and submit the data to the form directly
         $actualAddress = new Address();
-        $form = $this->factory->create(new AddressMapType(), $actualAddress);
+        $form = $this->factory->create(AddressMapType::class, $actualAddress);
         $form->submit($data);
 
         $this->assertTrue($form->isSynchronized(), 'Data transformer ok');
