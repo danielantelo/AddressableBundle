@@ -26,7 +26,7 @@ AddressMap.prototype.init = function() {
     } else {
         var script = document.createElement("script");
         script.type = 'text/javascript';
-        script.src = '//maps.google.com/maps/api/js?v=3.25&key=' + this.settings.googleApiKey + '&callback=' + this.settings.googleMapsLoadedCallback;
+        script.src = '//maps.google.com/maps/api/js?key=' + this.settings.googleApiKey + '&callback=' + this.settings.googleMapsLoadedCallback;
         document.body.appendChild(script);
     }
 
