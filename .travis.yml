@@ -9,5 +9,4 @@ install:
   - composer install --prefer-dist --no-interaction
 
 script:
-  - vendor/bin/phpcs --standard=PSR2 --extensions=php Document Entity Form Model Services Tests Validator
   - vendor/bin/phpunit
