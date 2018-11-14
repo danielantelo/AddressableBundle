@@ -87,26 +87,20 @@ trait Contactable
         );
     }
     /**
-     * Sets all the address fields from an array(
-     *       'country' => $this->getCountry(),
-     *       'zipCode' => $this->getZipCode(),
-     *       'streetNumber' => $this->getStreetNumber(),
-     *       'streetName' => $this->getStreetName(),
-     *       'administrativeAreaLevel1' => $this->getAdministrativeAreaLevel1(),
-     *       'administrativeAreaLevel2' => $this->getAdministrativeAreaLevel2(),
-     *       'city' => $this->getCity(),
-     *       'latitude' => $this->getLatitude(),
-     *       'longitude' => $this->getLongitude()
+     * Sets all the contact fields from an array(
+     *       'email' => $this->getEmail(),
+     *       'phoneNumber' => $this->getPhoneNumber(),
+     *       'fax' => $this->getFax()
      *  ).
      *
-     * @param array $address
+     * @param array $details
      *
      * @return \Addressable\Bundle\Model\ContactableInterface
      */
     public function setContactDetails(array $details)
     {
         $this->setEmail($details['email']);
-        $this->setCity($details['phoneNumber']);
-        $this->setZipCode($details['fax']);
+        $this->setPhoneNumber($details['phoneNumber']);
+        $this->setFax($details['fax']);
     }
 }
