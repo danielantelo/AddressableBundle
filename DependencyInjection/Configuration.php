@@ -13,7 +13,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder('addressable_bundle');
-        $rootNode = $treeBuilder->getRootNode();
+        $rootNode = method_exists(TreeBuilder::class, 'getRootNode') ? $treeBuilder->getRootNode() : $treeBuilder->root('addressable_bundle');
 
         // Here you should define the parameters that are allowed to
         // configure your bundle. See the documentation linked above for
