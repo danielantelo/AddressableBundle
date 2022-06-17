@@ -9,7 +9,6 @@ composer.lock
 composer.phar
 
 # misc generated
-bin/
 build/
 
 # ide files

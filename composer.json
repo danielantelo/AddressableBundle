@@ -1,29 +1,34 @@
 {
-    "name": "daa/addressable-bundle",
-    "type": "symfony-bundle",
-    "description": "Symfony bundle to make entities addressable and geo spacial services for searching and comparing their latitude/longitude",
-    "authors": [
-        {
-            "name": "Daniel Antelo",
-            "homepage": "https://github.com/danielantelo"
-        }
-    ],
-    "require": {
-        "php": ">=5.4",
-        "symfony/form": ">3.0",
-        "symfony/http-kernel": ">3.0",
-        "symfony/dependency-injection": ">3.0",
-        "symfony/config": ">3.0",
-        "symfony/validator": ">3.0",
-        "symfony/options-resolver": ">3.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.4"
-    },
-    "autoload": {
-        "psr-4": { 
-            "Addressable\\Bundle\\": "",
-            "Daa\\Addressable\\Bundle\\": ""
-        }
+  "name": "daa/addressable-bundle",
+  "type": "symfony-bundle",
+  "description": "Symfony bundle to make entities addressable and geo spacial services for searching and comparing their latitude/longitude",
+  "authors": [
+    {
+      "name": "Daniel Antelo",
+      "homepage": "https://github.com/danielantelo"
     }
+  ],
+  "archive": {
+    "exclude": [
+      "Sandbox"
+    ]
+  },
+  "require": {
+    "php": ">=5.4",
+    "symfony/form": ">3.0",
+    "symfony/http-kernel": ">3.0",
+    "symfony/dependency-injection": ">3.0",
+    "symfony/config": ">3.0",
+    "symfony/validator": ">3.0",
+    "symfony/options-resolver": ">3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Addressable\\Bundle\\": "",
+      "Daa\\Addressable\\Bundle\\": ""
+    }
+  }
 }

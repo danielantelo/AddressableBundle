@@ -6,6 +6,12 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    public function __construct($environment, $debug) {
+        parent::__construct($environment, $debug);
+        // get rid of Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone
+        date_default_timezone_set( 'Europe/London' );
+    }
+
     public function registerBundles()
     {
         $bundles = [

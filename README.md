@@ -1,24 +1,51 @@
 [![Build Status](https://api.travis-ci.org/danielantelo/AddressableBundle.svg?branch=master)](https://travis-ci.org/danielantelo/AddressableBundle)
 
-Symfony2 Addressable Bundle
+Symfony Addressable Bundle
 ===========================
 
-This is a Symfony2 bundle which facilitates making entities addressable and geo location aware.
+This is a Symfony bundle which facilitates making entities addressable and geo location aware.
 
 It includes a google map form type to search for and set addresses (with lat/lng), and a geo spatial service to ease calculating distances, sorting and filtering within a radius, etc using these objects with latitude and longitude.
 
-
-Installation
-------------
+Installation Symfony 5/6
+---------------------------
 
 Add the following to composer.json:
 
 ```yaml
-#composer.json
-
 "require": {
     ...
-    "daa/addressable-bundle": "0.*"
+    "daa/addressable-bundle": "^0.6"
+}
+```
+
+Register the bundle in your `config/bundles.php`:
+
+```php
+return [
+    ...
+    Addressable\Bundle\AddressableBundle::class => ['all' => true]
+]
+```
+
+Include the twig template for the type layout in `config/packages/twig.yml`
+
+```yaml
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes:
+        - '@Addressable/Form/fields.html.twig'
+```
+
+Installation Symfony 2/3
+-------------------------
+
+Add the following to composer.json:
+
+```yaml
+"require": {
+    ...
+    "daa/addressable-bundle": "0.5"
 }
 ```
 
@@ -28,16 +55,16 @@ Register the bundle in your `app/AppKernel.php`:
 new Addressable\Bundle\AddressableBundle(),
 ```
 
-Include the twig template for the type layout.
+Include the twig template for the type layout in `app/config/config.yml`
 
 ```yaml
-# app/config/config.yml
-
 twig:
     form_themes:
-          - '@Addressable/Form/fields.html.twig' 
-          #- AddressableBundle:Form:fields.html.twig (in older versions)
+          - '@Addressable/Form/fields.html.twig' # or AddressableBundle:Form:fields.html.twig in older versions of symfony
 ```
+
+Usage
+------
 
 Now your entity or document must:
 1. implement the included AddressableInterface 
